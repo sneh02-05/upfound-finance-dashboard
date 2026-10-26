@@ -1,0 +1,165 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#0b0d0b">
+    <title>UpFound | Personal Finance Tracker</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <aside class="sidebar">
+        <a href="#" class="logo">upfound<span>.</span></a>
+        <p class="sidebar-label">WORKSPACE</p>
+
+        <nav class="side-nav">
+            <a class="nav-link active" href="#overview">▦ &nbsp; Overview</a>
+            <a class="nav-link" href="#transactions">↔ &nbsp; Transactions</a>
+            <a class="nav-link" href="#goals">◎ &nbsp; Savings goals</a>
+        </nav>
+
+        <div class="sidebar-bottom">
+            <div class="profile-avatar">U</div>
+            <div><strong>Your workspace</strong><p>Personal account</p></div>
+        </div>
+    </aside>
+
+    <main class="main-content" id="overview">
+        <header class="topbar">
+            <div>
+                <p class="eyebrow">PERSONAL FINANCE</p>
+                <h1>Your money, in focus.</h1>
+                <p class="muted">Understand today. Plan for tomorrow.</p>
+            </div>
+            <button class="primary-btn" id="add-transaction-btn">+ Add transaction</button>
+        </header>
+
+        <section class="summary-grid">
+            <article class="summary-card balance-card">
+                <p>Total balance <span>↗</span></p>
+                <h2 id="total-balance">₹0.00</h2>
+                <small>Income minus expenses</small>
+            </article>
+            <article class="summary-card">
+                <p>Total income <span class="green">↗</span></p>
+                <h2 id="total-income">₹0.00</h2>
+                <small>Money received</small>
+            </article>
+            <article class="summary-card">
+                <p>Total expenses <span class="red">↘</span></p>
+                <h2 id="total-expenses">₹0.00</h2>
+                <small>Money spent</small>
+            </article>
+        </section>
+
+        <section class="dashboard-grid">
+            <article class="panel spending-panel">
+                <div class="panel-heading">
+                    <div><p class="eyebrow">YOUR CASH FLOW</p><h2>Income vs expenses</h2></div>
+                    <span class="status-pill">ALL TIME</span>
+                </div>
+
+                <div class="flow-comparison">
+                    <div class="flow-item">
+                        <div class="flow-label"><span>Income</span><strong id="chart-income-label">₹0</strong></div>
+                        <div class="bar-track"><div id="income-bar" class="bar income-bar"></div></div>
+                    </div>
+                    <div class="flow-item">
+                        <div class="flow-label"><span>Expenses</span><strong id="chart-expense-label">₹0</strong></div>
+                        <div class="bar-track"><div id="expense-bar" class="bar expense-bar"></div></div>
+                    </div>
+                </div>
+
+                <div class="insight-box">
+                    <span class="insight-icon">✳</span>
+                    <div><strong id="insight-title">Your financial snapshot</strong><p id="insight-text">Add your first transaction to see your cash flow insights.</p></div>
+                </div>
+            </article>
+
+            <article class="panel quick-panel">
+                <p class="eyebrow">QUICK ACTION</p>
+                <h2>Make your next move.</h2>
+                <p class="muted">Record a transaction or make progress toward a savings goal.</p>
+                <button class="primary-btn full-btn" id="quick-add">+ Record transaction</button>
+                <button class="secondary-btn full-btn" id="quick-goal">◎ Create savings goal</button>
+            </article>
+        </section>
+
+        <section class="panel transactions-panel" id="transactions">
+            <div class="panel-heading">
+                <div><p class="eyebrow">ACTIVITY</p><h2>Recent transactions</h2></div>
+                <select id="transaction-filter" aria-label="Filter transactions">
+                    <option value="all">All transactions</option>
+                    <option value="income">Income only</option>
+                    <option value="expense">Expenses only</option>
+                </select>
+            </div>
+            <div class="transaction-head">
+                <span>TRANSACTION</span><span>CATEGORY</span><span>DATE</span><span>AMOUNT</span><span></span>
+            </div>
+            <div id="transaction-list" class="transaction-list">
+                <div class="empty-state"><span>↔</span><h3>No transactions yet</h3><p>Add your first income or expense to get started.</p></div>
+            </div>
+        </section>
+
+        <section class="panel goals-panel" id="goals">
+            <div class="panel-heading">
+                <div><p class="eyebrow">THINK AHEAD</p><h2>Your savings goals</h2></div>
+                <button class="secondary-btn" id="add-goal-btn">+ New goal</button>
+            </div>
+            <div id="goal-list" class="goal-grid">
+                <div class="empty-goals"><p>No savings goals yet. Create one to start tracking your progress.</p></div>
+            </div>
+        </section>
+
+        <footer class="app-footer"><span>upfound<span class="green">.</span></span><span>Personal finance concept · Demo data stays in this browser</span></footer>
+    </main>
+
+    <div class="modal-overlay" id="transaction-modal" aria-hidden="true">
+        <form class="modal" id="transaction-form">
+            <div class="modal-heading"><div><p class="eyebrow">YOUR ACTIVITY</p><h2>Add transaction</h2></div><button type="button" class="close-modal" data-close="transaction-modal" aria-label="Close">×</button></div>
+
+            <label>Transaction type</label>
+            <div class="type-toggle">
+                <label><input type="radio" name="type" value="income" checked><span>＋ Income</span></label>
+                <label><input type="radio" name="type" value="expense"><span>− Expense</span></label>
+            </div>
+
+            <label for="transaction-title">Description</label>
+            <input id="transaction-title" name="title" maxlength="60" placeholder="e.g. Freelance payment" required>
+
+            <div class="form-row">
+                <div><label for="transaction-amount">Amount (₹)</label><input id="transaction-amount" name="amount" type="number" min="0.01" max="100000000" step="0.01" placeholder="0.00" required></div>
+                <div><label for="transaction-category">Category</label><select id="transaction-category" name="category"><option>Salary</option><option>Freelance</option><option>Investment</option><option>Food</option><option>Transport</option><option>Shopping</option><option>Bills</option><option>Education</option><option>Health</option><option>Other</option></select></div>
+            </div>
+
+            <label for="transaction-date">Date</label>
+            <input id="transaction-date" name="date" type="date" required>
+            <p class="form-error" id="transaction-error" role="alert"></p>
+            <button class="primary-btn full-btn" type="submit">Save transaction</button>
+        </form>
+    </div>
+
+    <div class="modal-overlay" id="goal-modal" aria-hidden="true">
+        <form class="modal" id="goal-form">
+            <div class="modal-heading"><div><p class="eyebrow">PLAN AHEAD</p><h2>Create savings goal</h2></div><button type="button" class="close-modal" data-close="goal-modal" aria-label="Close">×</button></div>
+
+            <label for="goal-name">Goal name</label>
+            <input id="goal-name" name="name" maxlength="50" placeholder="e.g. New laptop" required>
+
+            <div class="form-row">
+                <div><label for="goal-target">Target amount (₹)</label><input id="goal-target" name="target" type="number" min="1" max="100000000" step="0.01" required></div>
+                <div><label for="goal-saved">Already saved (₹)</label><input id="goal-saved" name="saved" type="number" min="0" max="100000000" step="0.01" value="0" required></div>
+            </div>
+
+            <p class="form-error" id="goal-error" role="alert"></p>
+            <button class="primary-btn full-btn" type="submit">Create goal</button>
+        </form>
+    </div>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>

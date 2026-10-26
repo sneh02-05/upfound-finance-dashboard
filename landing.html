@@ -1,0 +1,413 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UpFound | Take Control of Your Money</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .landing-page {
+            min-height: 100vh;
+            background: #0b0d0b;
+            color: #f2f5ef;
+            font-family: Arial, sans-serif;
+        }
+
+        .landing-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 28px 7%;
+            border-bottom: 1px solid #252a24;
+        }
+
+        .landing-logo {
+            font-size: 32px;
+            font-weight: 800;
+            color: #f2f5ef;
+            text-decoration: none;
+            letter-spacing: -1.5px;
+        }
+
+        .landing-logo span {
+            color: #b8ff5c;
+        }
+
+        .landing-nav a:not(.landing-logo) {
+            color: #d1d8cc;
+            text-decoration: none;
+            margin-left: 30px;
+        }
+
+        .landing-nav .nav-cta {
+            background: #b8ff5c;
+            color: #0b0d0b !important;
+            padding: 13px 20px;
+            border-radius: 9px;
+            font-weight: bold;
+        }
+
+        .landing-hero {
+            padding: 105px 7% 85px;
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            align-items: center;
+            gap: 65px;
+        }
+
+        .landing-eyebrow {
+            color: #b8ff5c;
+            font-size: 12px;
+            font-weight: bold;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+
+        .landing-hero h1 {
+            font-size: clamp(42px, 5.5vw, 72px);
+            line-height: 1.08;
+            letter-spacing: -3px;
+            margin: 24px 0;
+            max-width: 700px;
+        }
+
+        .landing-hero h1 span {
+            color: #b8ff5c;
+        }
+
+        .landing-description {
+            color: #a0a99c;
+            font-size: 17px;
+            line-height: 1.8;
+            max-width: 500px;
+        }
+
+        .landing-actions {
+            display: flex;
+            align-items: center;
+            gap: 25px;
+            margin-top: 32px;
+            flex-wrap: wrap;
+        }
+
+        .landing-button {
+            display: inline-block;
+            padding: 16px 25px;
+            background: #b8ff5c;
+            color: #0b0d0b;
+            text-decoration: none;
+            border-radius: 9px;
+            font-weight: bold;
+        }
+
+        .landing-secondary {
+            color: #f2f5ef;
+            text-decoration: none;
+        }
+
+        .landing-preview {
+            background: #131713;
+            border: 1px solid #30382c;
+            border-radius: 20px;
+            padding: 28px;
+            box-shadow: 0 25px 80px #00000045;
+        }
+
+        .preview-top {
+            display: flex;
+            justify-content: space-between;
+            color: #a0a99c;
+            font-size: 13px;
+        }
+
+        .preview-balance {
+            font-size: 36px;
+            font-weight: bold;
+            margin: 18px 0 8px;
+        }
+
+        .preview-change {
+            color: #b8ff5c;
+            font-size: 13px;
+        }
+
+        .preview-chart {
+            height: 115px;
+            display: flex;
+            align-items: end;
+            gap: 12px;
+            margin: 28px 0;
+            border-bottom: 1px solid #30382c;
+            padding-bottom: 1px;
+        }
+
+        .preview-chart span {
+            flex: 1;
+            background: #b8ff5c;
+            border-radius: 5px 5px 0 0;
+            opacity: 0.85;
+        }
+
+        .preview-chart span:nth-child(1) { height: 35%; }
+        .preview-chart span:nth-child(2) { height: 55%; }
+        .preview-chart span:nth-child(3) { height: 43%; }
+        .preview-chart span:nth-child(4) { height: 75%; }
+        .preview-chart span:nth-child(5) { height: 60%; }
+        .preview-chart span:nth-child(6) { height: 90%; }
+        .preview-chart span:nth-child(7) { height: 72%; }
+
+        .preview-bottom {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+
+        .preview-stat {
+            background: #1a2018;
+            border-radius: 10px;
+            padding: 15px;
+        }
+
+        .preview-stat p {
+            color: #a0a99c;
+            font-size: 12px;
+            margin: 0 0 10px;
+        }
+
+        .preview-stat strong {
+            font-size: 20px;
+        }
+
+        .landing-features {
+            padding: 65px 7% 90px;
+            background: #101310;
+        }
+
+        .features-heading {
+            text-align: center;
+            margin-bottom: 42px;
+        }
+
+        .features-heading h2 {
+            font-size: 36px;
+            margin: 15px 0;
+        }
+
+        .features-heading p {
+            color: #a0a99c;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 22px;
+        }
+
+        .feature-card {
+            background: #151915;
+            border: 1px solid #2a3028;
+            border-radius: 15px;
+            padding: 28px;
+        }
+
+        .feature-icon {
+            font-size: 25px;
+            color: #b8ff5c;
+        }
+
+        .feature-card h3 {
+            margin: 20px 0 12px;
+        }
+
+        .feature-card p {
+            color: #a0a99c;
+            line-height: 1.7;
+            font-size: 14px;
+        }
+
+        .landing-bottom-cta {
+            text-align: center;
+            padding: 85px 20px;
+        }
+
+        .landing-bottom-cta h2 {
+            font-size: 38px;
+            margin: 15px 0;
+        }
+
+        .landing-bottom-cta p {
+            color: #a0a99c;
+            margin-bottom: 28px;
+        }
+
+        .landing-footer {
+            padding: 25px 7%;
+            border-top: 1px solid #252a24;
+            color: #929a8e;
+            display: flex;
+            justify-content: space-between;
+            gap: 15px;
+            flex-wrap: wrap;
+            font-size: 13px;
+        }
+
+        @media (max-width: 850px) {
+            .landing-hero {
+                grid-template-columns: 1fr;
+                padding-top: 70px;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 520px) {
+            .landing-nav {
+                padding: 22px 5%;
+            }
+
+            .landing-nav a:not(.landing-logo) {
+                margin-left: 12px;
+                font-size: 13px;
+            }
+
+            .landing-nav .nav-about {
+                display: none;
+            }
+
+            .landing-hero {
+                padding: 65px 6%;
+            }
+
+            .landing-hero h1 {
+                letter-spacing: -1.5px;
+            }
+
+            .landing-features {
+                padding: 55px 6%;
+            }
+
+            .landing-footer {
+                padding: 22px 6%;
+            }
+        }
+    </style>
+</head>
+
+<body class="landing-page">
+
+    <header class="landing-nav">
+        <a href="landing.html" class="landing-logo">upfound<span>.</span></a>
+
+        <nav>
+            <a href="#features" class="nav-about">Features</a>
+            <a href="index.html" class="nav-cta">Get Started ↗</a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="landing-hero">
+            <div>
+                <p class="landing-eyebrow">Personal finance, simplified</p>
+
+                <h1>Your money.<br>Your future.<br><span>Your control.</span></h1>
+
+                <p class="landing-description">
+                    Take charge of your finances with a clearer view of your
+                    spending, smarter savings goals, and a better plan for tomorrow.
+                </p>
+
+                <div class="landing-actions">
+                    <a href="index.html" class="landing-button">Explore your dashboard ↗</a>
+                    <a href="#features" class="landing-secondary">Discover more ↓</a>
+                </div>
+            </div>
+
+            <div class="landing-preview">
+                <div class="preview-top">
+                    <span>YOUR FINANCIAL OVERVIEW</span>
+                    <span>● LIVE PREVIEW</span>
+                </div>
+
+                <p style="color:#a0a99c; margin-top:30px;">Available balance</p>
+                <div class="preview-balance">₹48,250.00</div>
+                <div class="preview-change">↑ Your money, better organised</div>
+
+                <div class="preview-chart" aria-label="Illustrative spending chart">
+                    <span></span><span></span><span></span><span></span>
+                    <span></span><span></span><span></span>
+                </div>
+
+                <div class="preview-bottom">
+                    <div class="preview-stat">
+                        <p>Monthly income</p>
+                        <strong>₹35,000</strong>
+                    </div>
+
+                    <div class="preview-stat">
+                        <p>Savings goal</p>
+                        <strong>72%</strong>
+                    </div>
+                </div>
+
+                <p style="font-size:11px;color:#929a8e;margin-top:18px;">
+                    Illustrative preview · Not real financial data
+                </p>
+            </div>
+        </section>
+
+        <section class="landing-features" id="features">
+            <div class="features-heading">
+                <p class="landing-eyebrow">Everything in one place</p>
+                <h2>Make every rupee count.</h2>
+                <p>Simple tools to help you understand your money and plan ahead.</p>
+            </div>
+
+            <div class="features-grid">
+                <article class="feature-card">
+                    <div class="feature-icon">↗</div>
+                    <h3>Track your spending</h3>
+                    <p>
+                        Record income and expenses, organise transactions by category,
+                        and understand where your money goes.
+                    </p>
+                </article>
+
+                <article class="feature-card">
+                    <div class="feature-icon">◎</div>
+                    <h3>Build savings goals</h3>
+                    <p>
+                        Set a savings target, record your progress, and stay focused
+                        on the things you want to achieve.
+                    </p>
+                </article>
+
+                <article class="feature-card">
+                    <div class="feature-icon">⌁</div>
+                    <h3>See the bigger picture</h3>
+                    <p>
+                        View your balance, compare income with expenses, and make
+                        more informed everyday money decisions.
+                    </p>
+                </article>
+            </div>
+        </section>
+
+        <section class="landing-bottom-cta">
+            <p class="landing-eyebrow">Your next chapter starts here</p>
+            <h2>Give your money a direction.</h2>
+            <p>One dashboard. Clearer decisions. Goals within reach.</p>
+            <a href="index.html" class="landing-button">Get Started with UpFound ↗</a>
+        </section>
+    </main>
+
+    <footer class="landing-footer">
+        <span>© 2026 UpFound. Built for better money habits.</span>
+        <span>Personal finance, on your terms.</span>
+    </footer>
+
+</body>
+</html>
+```
